@@ -13,4 +13,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/category',[CategoryController::class, 'index']);
+    Route::get('/add-category',[CategoryController::class, 'create'])->name('addCategory');
 });
