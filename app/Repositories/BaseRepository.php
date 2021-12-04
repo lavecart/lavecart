@@ -18,4 +18,8 @@ abstract class BaseRepository implements BaseRepositoryInterface
     public function getAll() : Collection {
         return $this->model->all();
     }
+
+    public function create(array $data) {
+        return $this->model->create($data);
+    }
 }

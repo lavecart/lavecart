@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductCategoryRequest;
 use App\Models\ProductCategory;
 use App\Repositories\ProductCategoryRepository;
+use App\Services\ProductCategoryService;
 use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
 {
     private $productCategoryRepository;
+    private $productCategoryService;
 
-    public function __construct(ProductCategoryRepository $productCategoryRepository)
+    public function __construct(ProductCategoryRepository $productCategoryRepository, ProductCategoryService $productCategoryService)
     {
         $this->productCategoryRepository = $productCategoryRepository;
+        $this->productCategoryService = $productCategoryService;
     }
 
     /**
@@ -31,9 +35,13 @@ class ProductCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductCategoryRequest $request)
     {
-        
+        $validatedProductCategoryData = $request->validated();
+        $this->productCategoryService->create($validatedProductCategoryData);
+        return response()->json([
+            'message' => 'Product category added successfully'
+        ]);
     }
 
     /**
