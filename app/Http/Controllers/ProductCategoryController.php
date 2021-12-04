@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductCategory;
+use App\Repositories\ProductCategoryRepository;
 use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
 {
+    private $productCategoryRepository;
+
+    public function __construct(ProductCategoryRepository $productCategoryRepository)
+    {
+        $this->productCategoryRepository = $productCategoryRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json($this->productCategoryRepository->getAll());
     }
 
     /**
@@ -25,7 +33,7 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
