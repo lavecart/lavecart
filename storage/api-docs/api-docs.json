@@ -1,0 +1,49 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation for Lavecart",
+        "version": "1.1"
+    },
+    "paths": {
+        "api/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "description": "Registration of an user",
+                "operationId": "ab2b7d41093853c1cd75e0410e4833e8",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "String"
+                                    },
+                                    "emaili": {
+                                        "type": "String"
+                                    },
+                                    "password": {
+                                        "type": "String"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Registration Successful"
+                    },
+                    "400": {
+                        "description": "Registration Unsuccessful"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
